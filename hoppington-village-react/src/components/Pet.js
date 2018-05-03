@@ -3,7 +3,7 @@ import React from 'react'
 const Pet = (props) => {
 
   return (
-    <div>
+    <div className="pet-image">
     {props.animal ?
        <img src={props.animal.sprites.main} /> :
        null }
