@@ -7,4 +7,4 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Animal.create(sprites:["https://imgur.com/XocUSO6", "https://imgur.com/JtH23o7"], name: "bunny", energy_level: 10, hunger_level: 10, cleanliness: 10, mood: "calm")
 User.create(username: "bunny_tamer")
-Pet.create(user_id: 1, animal_id: 1)
+Pet.create(name: "angel", user_id: 1, animal_id: 1)
