@@ -4,4 +4,8 @@ class Api::V1::PetsController < ApplicationController
     render json: Pet.all
   end
 
+  def show
+    render json: Pet.find(params[:id])
+  end
+
 end
