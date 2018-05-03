@@ -18,10 +18,6 @@ ActiveRecord::Schema.define(version: 2018_05_03_165006) do
   create_table "animals", force: :cascade do |t|
     t.string "name"
     t.string "sprites"
-    t.integer "hunger_level"
-    t.integer "energy_level"
-    t.string "mood"
-    t.integer "cleanliness"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -45,6 +41,10 @@ ActiveRecord::Schema.define(version: 2018_05_03_165006) do
   create_table "pets", force: :cascade do |t|
     t.integer "user_id"
     t.integer "animal_id"
+    t.integer "hunger_level"
+    t.integer "energy_level"
+    t.string "mood"
+    t.integer "cleanliness"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
