@@ -26,8 +26,8 @@ class GameContainer extends React.Component{
   }
 
   handleDragStart=(e)=>{
-    // console.log(e.target.id)
-    const foundItem = this.state.items.find((item)=>(item.id == e.target.id))
+    console.log(e.target.id)
+    const foundItem = this.state.items.find((item)=>(item.name === e.target.id))
     // console.log("x", e.clientX, "y", e.clientY)
     this.setState({
       endOfDrag: null,
@@ -38,14 +38,6 @@ class GameContainer extends React.Component{
   }
 
   handleDragEnd=(e)=>{
-    //going to kind of hardcode the target for now
-    //will change based on ultimate position/size of image
-    // let posX = e.clientX
-    // let posY = e.clientY
-    // if (posX >= 430 && posX <= 460 && posY >=590 && posY <=615){
-    //   this.handleFeeding()
-    // }
-
     this.setState({
       endOfDrag:{x: e.clientX, y: e.clientY},
       dragX: null,
@@ -58,7 +50,7 @@ class GameContainer extends React.Component{
     return (
       <div>
         <ItemList handleDragEnd= {this.handleDragEnd} dragX={this.state.dragX} dragY={this.state.dragY} beingDragged={this.state.beingDragged} handleDragStart={this.handleDragStart} items={this.state.items}/>
-        <PetContainer endOfDrag={this.state.endOfDrag} animals={this.state.animals}/>
+        <PetContainer beingDragged={this.state.beingDragged} endOfDrag={this.state.endOfDrag} animals={this.state.animals}/>
       </div>
     )
   }

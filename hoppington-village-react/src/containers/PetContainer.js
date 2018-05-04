@@ -24,18 +24,28 @@ class PetContainer extends Component{
       }))
   }
 
-  handleFeedBunny=()=>{
-    this.setState({
-      hangry: this.state.hangry - 1,
-    })
+  handleFeedBunny=(drop)=>{
+    if (drop.x >= 430 && drop.x <= 460 && drop.y >=590 && drop.y <= 615) {
+      this.setState({
+        hangry: this.state.hangry - 1,
+      })
+    }
+  }
+
+  handleBunnyHat=(drop)=>{
+    //way to change attribute to have its position lock on where its dropped?
+    //render a different sprite that has the hat included if dropped in right place?
+    //leaving to be brainstormed for now
   }
 
   componentWillReceiveProps(newProps) {
     if (newProps.endOfDrag) {
-      console.log(newProps.endOfDrag)
-      let drop = newProps.endOfDrag
-      if (drop.x >= 430 && drop.x <= 460 && drop.y >=590 && drop.y <= 615) {
-        this.state.hangry > 0 ? this.handleFeedBunny() : null
+    let drop = newProps.endOfDrag
+    let dragItem = this.props.beingDragged.name
+        if (dragItem==="carrot") {
+        this.handleFeedBunny(drop)
+      } else if (dragItem==="party-hat"){
+        this.handleBunnyHat(drop)
       }
     }
   }
