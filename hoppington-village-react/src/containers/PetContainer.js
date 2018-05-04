@@ -30,6 +30,7 @@ class PetContainer extends Component{
   }
 
   componentWillReceiveProps(newProps) {
+    console.log(newProps)
     if (newProps.endOfDrag) {
       let drop = newProps.endOfDrag
       if (drop.x >= 430 && drop.x <= 460 && drop.y >=590 && drop.y <= 615) {
