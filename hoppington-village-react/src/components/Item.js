@@ -7,12 +7,14 @@ const Item = (props) => {
   return (
     <div>
     <img
-      id={item.id}
+      id={item.name}
       onDrag={props.handleDragStart}
       onDragEnd={props.handleDragEnd}
       src={item.sprite}
       alt={item.id}
-      style={(item === props.beingDragged) ? { position:"absolute", left: props.dragX-40, top: props.dragY-70 } : {}}
+      style={
+        (item === props.beingDragged) ? { position:"absolute", left: props.dragX-40, top: props.dragY-60 } : {}
+      }
     />
     </div>
   )
