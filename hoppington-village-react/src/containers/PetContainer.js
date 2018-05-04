@@ -10,6 +10,7 @@ class PetContainer extends Component{
     hangry: 10,
     energy: 10,
     cleanliness: 10,
+    animalPosition: {}
   }
 
   componentDidMount(){
@@ -30,8 +31,8 @@ class PetContainer extends Component{
   }
 
   componentWillReceiveProps(newProps) {
-    console.log(newProps)
     if (newProps.endOfDrag) {
+      console.log(newProps.endOfDrag)
       let drop = newProps.endOfDrag
       if (drop.x >= 430 && drop.x <= 460 && drop.y >=590 && drop.y <= 615) {
         this.state.hangry > 0 ? this.handleFeedBunny() : null

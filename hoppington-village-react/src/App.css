@@ -45,4 +45,6 @@
 
 .pet-image img{
   height: 400px;
+  /* position: relative;
+  left: 100px; */
 }

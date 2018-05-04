@@ -7,15 +7,3 @@ it('renders without crashing', () => {
   ReactDOM.render(<App />, div);
   ReactDOM.unmountComponentAtNode(div);
 });
-
-
-// <div>
-//   <img
-//     id={props.items[0].id}
-//     onDrag = {props.handleDragStart}
-//     onDragEnd = {props.handleDragEnd}
-//     src={props.items[0].sprite}
-//     alt={props.items[0].id}
-//     style = {(props.items[0] === props.beingDragged) ? { position:"absolute", left: props.dragX, top: props.dragY } : {}}
-//   />
-// </div>
