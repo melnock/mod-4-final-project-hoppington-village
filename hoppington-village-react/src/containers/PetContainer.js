@@ -39,12 +39,13 @@ class PetContainer extends Component{
   }
 
   componentWillReceiveProps(newProps) {
-    console.log(this.props.beingDragged)
     if (newProps.endOfDrag) {
-      if (this.props.beingDragged.name==="carrot") {
-        this.handleFeedBunny(newProps.endOfDrag)
-      } else if (this.props.beingDragged.name==="party-hat"){
-        this.handleBunnyHat(newProps.endOfDrag)
+    let drop = newProps.endOfDrag
+    let dragItem = this.props.beingDragged.name
+        if (dragItem==="carrot") {
+        this.handleFeedBunny(drop)
+      } else if (dragItem==="party-hat"){
+        this.handleBunnyHat(drop)
       }
     }
   }

@@ -11,7 +11,7 @@ class Login extends React.Component{
       body: JSON.stringify({username: userObj.username, password: userObj.password})
     }).then(res=>res.json()).then(json=>console.log(json))
   }
-  //this is being rolled back
+  //this is being rolled back/not posting because of password (I think)
 
   //for auth, have a function that posts to sessions?
   //it's a request that returns a token
