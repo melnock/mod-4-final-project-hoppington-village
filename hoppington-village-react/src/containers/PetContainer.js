@@ -25,8 +25,17 @@ class PetContainer extends Component{
 
   handleFeedBunny=()=>{
     this.setState({
-      hangry: this.state.hangry + 1,
+      hangry: this.state.hangry - 1,
     })
+  }
+
+  componentWillReceiveProps(newProps) {
+    if (newProps.endOfDrag) {
+      let drop = newProps.endOfDrag
+      if (drop.x >= 430 && drop.x <= 460 && drop.y >=590 && drop.y <= 615) {
+        this.state.hangry > 0 ? this.handleFeedBunny() : null
+      }
+    }
   }
 
   render(){
