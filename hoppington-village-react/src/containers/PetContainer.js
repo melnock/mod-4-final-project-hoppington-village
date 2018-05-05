@@ -36,6 +36,9 @@ class PetContainer extends Component{
     //way to change attribute to have its position lock on where its dropped?
     //render a different sprite that has the hat included if dropped in right place?
     //leaving to be brainstormed for now
+    //Melissa-note: My thought was to render the hat on top of the original sprite in
+    // order to dynaimcally render the extra items without needing to recreate a new sprite
+    //for potentially hundreds of options, but we can discuss. :)
   }
 
   componentWillReceiveProps(newProps) {
