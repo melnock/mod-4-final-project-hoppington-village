@@ -1,21 +1,19 @@
 import React from 'react'
+import Item from './Item'
 
 const ItemList = (props) => {
+  // console.log(props.items[0])
+  let renderedItems = props.items.map(item=>{
+    return (
+      <div>
+        <Item key={item.id} item={item} handleDragEnd={props.handleDragEnd} dragX={props.dragX} dragY={props.dragY} beingDragged={props.beingDragged} handleDragStart={props.handleDragStart}/>
+      </div>
+    )
+  })
 
   return (
     <div className="items">
-    {props.items[0] ?
-       <div>
-         <img
-           id={props.items[0].id}
-           onDrag = {props.handleDragStart}
-           onDragEnd = {props.handleDragEnd}
-           src={props.items[0].sprite}
-           alt={props.items[0].id}
-           style = {(props.items[0] === props.beingDragged) ? { position:"absolute", left: props.dragX, top: props.dragY } : {}}
-         />
-       </div>:
-       null }
+    { props.items ? renderedItems : null }
     </div>
   )
 }

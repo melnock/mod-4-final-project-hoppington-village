@@ -27,8 +27,8 @@ class GameContainer extends React.Component{
 
   handleDragStart=(e)=>{
     console.log(e.target.id)
-    const foundItem = this.state.items.find((item)=>(item.id == e.target.id))
-    console.log("x", e.clientX, "y", e.clientY)
+    const foundItem = this.state.items.find((item)=>(item.name === e.target.id))
+    // console.log("x", e.clientX, "y", e.clientY)
     this.setState({
       endOfDrag: null,
       dragX: e.clientX,
@@ -39,7 +39,7 @@ class GameContainer extends React.Component{
 
   handleDragEnd=(e)=>{
     this.setState({
-      endOfDrag:{x: this.state.dragX, y: this.state.dragY},
+      endOfDrag:{x: e.clientX, y: e.clientY},
       dragX: null,
       dragY: null,
       beingDragged: null,
@@ -47,11 +47,10 @@ class GameContainer extends React.Component{
   }
 
   render(){
-    console.log(this.state.beingDragged)
     return (
       <div>
         <ItemList handleDragEnd= {this.handleDragEnd} dragX={this.state.dragX} dragY={this.state.dragY} beingDragged={this.state.beingDragged} handleDragStart={this.handleDragStart} items={this.state.items}/>
-        <PetContainer endOfDrag={this.state.endOfDrag} animals={this.state.animals}/>
+        <PetContainer beingDragged={this.state.beingDragged} endOfDrag={this.state.endOfDrag} animals={this.state.animals}/>
       </div>
     )
   }
