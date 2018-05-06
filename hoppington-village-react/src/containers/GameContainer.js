@@ -26,7 +26,6 @@ class GameContainer extends React.Component{
   }
 
   handleDragStart=(e)=>{
-    console.log(e.target.id)
     const foundItem = this.state.items.find((item)=>(item.name === e.target.id))
     // console.log("x", e.clientX, "y", e.clientY)
     this.setState({

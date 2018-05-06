@@ -10,7 +10,8 @@ class PetContainer extends Component{
     hangry: 10,
     energy: 10,
     cleanliness: 10,
-    animalPosition: {}
+    animalPosition: {},
+    moused: false
   }
 
   componentDidMount(){
@@ -24,13 +25,26 @@ class PetContainer extends Component{
       }))
   }
 
-  handleFeedBunny=(drop)=>{
-    if (drop.x >= 430 && drop.x <= 460 && drop.y >=590 && drop.y <= 615) {
+  handleFeedBunny=()=>{
+    console.log("hey")
       this.setState({
         hangry: this.state.hangry - 1,
       })
-    }
   }
+
+  handleMouseEnter=(e)=>{
+    console.log("feeed meee!")
+    this.setState({
+      moused: true
+    })
+  }
+
+  handleMouseLeave=(e)=>{
+    console.log("nevermind")
+      this.setState({
+        moused: false
+      })
+    }
 
   handleBunnyHat=(drop)=>{
     //way to change attribute to have its position lock on where its dropped?
@@ -42,15 +56,16 @@ class PetContainer extends Component{
   }
 
   componentWillReceiveProps(newProps) {
-    if (newProps.endOfDrag) {
-    let drop = newProps.endOfDrag
-    let dragItem = this.props.beingDragged.name
+    if(this.state.moused){
+      let dragItem = this.props.beingDragged.name
+      console.log(dragItem==="carrot", this.props.endOfDrag)
+
         if (dragItem==="carrot") {
-        this.handleFeedBunny(drop)
-      } else if (dragItem==="party-hat"){
-        this.handleBunnyHat(drop)
+          this.handleFeedBunny()
+        } else if (dragItem==="party-hat"){
+          this.handleBunnyHat()
+        }
       }
-    }
   }
 
   render(){
@@ -63,6 +78,8 @@ class PetContainer extends Component{
           <Pet
           animal={this.props.animals.find(animal=>animal.id===this.state.pet.animal_id)}
           pet={this.state.pet}
+          handleMouseEnter={this.handleMouseEnter}
+          handleMouseLeave={this.handleMouseLeave}
           /> : "no pet yet"}
 
       </div>

@@ -15,4 +15,3 @@ Animal.create(sprites:{"main":"https://i.imgur.com/XocUSO6.png", "dancing":"http
 User.create(username: "bunny_tamer", password: "123")
 Pet.create(name: "angel", user_id: 1, animal_id: 1, cleanliness: 10, mood: "calm", energy_level: 10, hunger_level: 10)
 Item.create(name: "carrot", sprite: "https://openclipart.org/image/2400px/svg_to_png/175279/carrot.png", type_of_item: "food")
-Item.create(name: "party-hat", sprite: "http://clipground.com/images/party-hat-clipart-17.jpg", type_of_item: "clothing")

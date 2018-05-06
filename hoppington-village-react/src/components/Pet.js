@@ -5,14 +5,10 @@ const Pet = (props) => {
   return (
     <div className="pet-image">
     {props.animal ?
-       <img src={props.animal.sprites.main} /> :
+       <img onMouseEnter={props.handleMouseEnter} onMouseLeave={props.handleMouseLeave} src={props.animal.sprites.main} /> :
        null }
     </div>
   )
 }
 
 export default Pet
-
-// {
-//
-// }
