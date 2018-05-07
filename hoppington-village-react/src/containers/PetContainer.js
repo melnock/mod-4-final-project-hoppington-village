@@ -31,6 +31,9 @@ class PetContainer extends Component{
         energy: json.energy_level,
         cleanliness: json.cleanliness,
       }))
+      setInterval(()=>{ this.state.hangry <= 10 ?  this.setState({hangry: this.state.hangry + 1}) : null}, 60000)
+      setInterval(()=>{ this.state.cleanliness <= 10 ?  this.setState({cleanliness: this.state.cleanliness + 1}) : null}, 120000)
+      setInterval(()=>{ this.state.energy < 10 ?  this.setState({energy: this.state.energy + 1}) : null}, 45000)
   }
 
   handleFeedBunny=()=>{
