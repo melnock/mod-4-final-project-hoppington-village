@@ -8,6 +8,7 @@ const Item = (props) => {
     <div>
     <img
       id={item.name}
+      onClick={props.handleClick}
       onDrag={props.handleDragStart}
       onDragEnd={props.handleDragEnd}
       src={item.sprite}
