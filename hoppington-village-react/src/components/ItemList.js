@@ -6,7 +6,7 @@ const ItemList = (props) => {
   let renderedItems = props.items.map(item=>{
     return (
       <div>
-        <Item key={item.id} item={item} handleDragEnd={props.handleDragEnd} dragX={props.dragX} dragY={props.dragY} beingDragged={props.beingDragged} handleDragStart={props.handleDragStart}/>
+        <Item key={item.id} item={item} handleClick={props.handleClick} handleDragEnd={props.handleDragEnd} dragX={props.dragX} dragY={props.dragY} beingDragged={props.beingDragged} handleDragStart={props.handleDragStart}/>
       </div>
     )
   })

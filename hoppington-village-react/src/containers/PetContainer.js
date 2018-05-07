@@ -11,7 +11,9 @@ class PetContainer extends Component{
     energy: 10,
     cleanliness: 10,
     animalPosition: {},
-    moused: false
+    moused: false,
+    dragItem: null,
+    beingCleaned: false
   }
 
   componentDidMount(){
@@ -26,25 +28,34 @@ class PetContainer extends Component{
   }
 
   handleFeedBunny=()=>{
-    console.log("hey")
       this.setState({
         hangry: this.state.hangry - 1,
+        dragItem: null
       })
+  }
+
+  handleCleanBunny=()=>{
+    this.state.cleanliness > 0 ?
+    this.setState({
+      cleanliness: this.state.cleanliness - 1
+    }) : null
   }
 
   handleMouseEnter=(e)=>{
-    console.log("feeed meee!")
-    this.setState({
-      moused: true
-    })
+    if (this.state.beingCleaned===false && this.props.beingDragged==="brush"){
+      this.setState({
+        beingCleaned: true
+      })
+    }
+    // setTimeout(function () {
+    //     this.setState({beingCleaned: false});
+    //   }.bind(this), 10000)
   }
 
   handleMouseLeave=(e)=>{
-    console.log("nevermind")
-      this.setState({
-        moused: false
-      })
-    }
+    console.log("hi!")
+    this.handleCleanBunny()
+  }
 
   handleBunnyHat=(drop)=>{
     //way to change attribute to have its position lock on where its dropped?
@@ -57,21 +68,24 @@ class PetContainer extends Component{
 
   componentWillReceiveProps(newProps) {
     this.handleAnimalPlacement()
+    console.log(this.props)
       if(this.props.beingDragged){
-      let dragItem = this.props.beingDragged.name
-      if (this.props.endOfDrag){
-        console.log(dragItem==="carrot", this.props.endOfDrag)
-        console.log(this.props.endOfDrag.x < this.state.rect.right && this.props.endOfDrag.x > this.state.rect.left)
-        if (this.props.endOfDrag.x < this.state.rect.right && this.props.endOfDrag.x > this.state.rect.left){
-          if (this.props.endOfDrag.y < this.state.rect.bottom && this.props.endOfDrag.y > this.state.rect.top){
-            if (dragItem==="carrot") {
+        this.setState({
+          dragItem: this.props.beingDragged.name
+        })
+      }
+      if (newProps.endOfDrag){
+        console.log(newProps.endOfDrag.x < this.state.animalPosition.right && newProps.endOfDrag.x > this.state.animalPosition.left)
+        if (newProps.endOfDrag.x < this.state.animalPosition.right && newProps.endOfDrag.x > this.state.animalPosition.left){
+          if (newProps.endOfDrag.y < this.state.animalPosition.bottom && newProps.endOfDrag.y > this.state.animalPosition.top){
+            if (this.state.dragItem==="carrot") {
               this.handleFeedBunny()
-            } else if (dragItem==="party-hat"){
+            } else if (this.state.dragItem==="party-hat"){
               this.handleBunnyHat()
             }
           }
         }
-      }
+
     }
   }
 
@@ -92,9 +106,12 @@ class PetContainer extends Component{
       <div className="pet-container">
         <PetGauges pet={this.state.pet}
           hangry= {this.state.hangry}
+          cleanliness= {this.state.cleanliness}
+          energy= {this.state.energy}
         />
         {this.state.pet ?
           <Pet
+          beingCleaned={this.state.beingCleaned}
           animal={this.props.animals.find(animal=>animal.id===this.state.pet.animal_id)}
           pet={this.state.pet}
           handleAnimalPlacement={this.handleAnimalPlacement}
