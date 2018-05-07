@@ -86,7 +86,7 @@ class PetContainer extends Component{
 
   componentWillReceiveProps(newProps) {
     this.handleAnimalPlacement()
-      if(this.props.beingDragged){
+      if(this.props.beingDragged && this.props.beingDragged!=="brush"){
         this.setState({
           dragItem: this.props.beingDragged
         })
