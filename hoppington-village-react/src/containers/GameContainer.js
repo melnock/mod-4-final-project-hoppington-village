@@ -58,6 +58,10 @@ class GameContainer extends React.Component{
         class: 'cursor',
         beingDragged: 'brush'
       })
+    }else if (e.target.id==="bed") {
+      this.setState({
+        beingDragged: 'bed'
+      })
     }
   }
 
