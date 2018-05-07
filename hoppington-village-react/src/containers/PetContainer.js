@@ -12,7 +12,8 @@ class PetContainer extends Component{
     cleanliness: 10,
     animalPosition: {},
     moused: false,
-    dragItem: null
+    dragItem: null,
+    beingCleaned: false
   }
 
   componentDidMount(){
@@ -33,17 +34,28 @@ class PetContainer extends Component{
       })
   }
 
-  handleMouseEnter=(e)=>{
+  handleCleanBunny=()=>{
+    this.state.cleanliness > 0 ?
     this.setState({
-      moused: true
-    })
+      cleanliness: this.state.cleanliness - 1
+    }) : null
+  }
+
+  handleMouseEnter=(e)=>{
+    if (this.state.beingCleaned===false && this.props.beingDragged==="brush"){
+      this.setState({
+        beingCleaned: true
+      })
+    }
+    // setTimeout(function () {
+    //     this.setState({beingCleaned: false});
+    //   }.bind(this), 10000)
   }
 
   handleMouseLeave=(e)=>{
-      this.setState({
-        moused: false
-      })
-    }
+    console.log("hi!")
+    this.handleCleanBunny()
+  }
 
   handleBunnyHat=(drop)=>{
     //way to change attribute to have its position lock on where its dropped?
@@ -94,9 +106,12 @@ class PetContainer extends Component{
       <div className="pet-container">
         <PetGauges pet={this.state.pet}
           hangry= {this.state.hangry}
+          cleanliness= {this.state.cleanliness}
+          energy= {this.state.energy}
         />
         {this.state.pet ?
           <Pet
+          beingCleaned={this.state.beingCleaned}
           animal={this.props.animals.find(animal=>animal.id===this.state.pet.animal_id)}
           pet={this.state.pet}
           handleAnimalPlacement={this.handleAnimalPlacement}
