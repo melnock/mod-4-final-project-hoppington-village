@@ -46,6 +46,7 @@ class GameContainer extends React.Component{
   }
 
   render(){
+    console.log(this.state.endOfDrag)
     return (
       <div>
         <ItemList handleDragEnd= {this.handleDragEnd} dragX={this.state.dragX} dragY={this.state.dragY} beingDragged={this.state.beingDragged} handleDragStart={this.handleDragStart} items={this.state.items}/>
