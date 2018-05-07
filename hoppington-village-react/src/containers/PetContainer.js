@@ -12,7 +12,13 @@ class PetContainer extends Component{
     cleanliness: 10,
     animalPosition: {},
     moused: false,
-    dragItem: null
+    dragItem: null,
+    outfit: {
+      hat: null,
+      shirt: null,
+      pants: null,
+      shoes: null
+    }
   }
 
   componentDidMount(){
@@ -46,29 +52,28 @@ class PetContainer extends Component{
     }
 
   handleBunnyHat=(drop)=>{
-    //way to change attribute to have its position lock on where its dropped?
-    //render a different sprite that has the hat included if dropped in right place?
-    //leaving to be brainstormed for now
-    //Melissa-note: My thought was to render the hat on top of the original sprite in
-    // order to dynaimcally render the extra items without needing to recreate a new sprite
-    //for potentially hundreds of options, but we can discuss. :)
+    this.setState({
+      outfit:{
+        ...this.state.outfit,
+        hat: this.state.dragItem
+      }
+    })
   }
 
   componentWillReceiveProps(newProps) {
     this.handleAnimalPlacement()
-    console.log(this.props)
       if(this.props.beingDragged){
         this.setState({
-          dragItem: this.props.beingDragged.name
+          dragItem: this.props.beingDragged
         })
       }
       if (newProps.endOfDrag){
         console.log(newProps.endOfDrag.x < this.state.animalPosition.right && newProps.endOfDrag.x > this.state.animalPosition.left)
         if (newProps.endOfDrag.x < this.state.animalPosition.right && newProps.endOfDrag.x > this.state.animalPosition.left){
           if (newProps.endOfDrag.y < this.state.animalPosition.bottom && newProps.endOfDrag.y > this.state.animalPosition.top){
-            if (this.state.dragItem==="carrot") {
+            if (this.state.dragItem.type_of_item==="food") {
               this.handleFeedBunny()
-            } else if (this.state.dragItem==="party-hat"){
+            } else if (this.state.dragItem.type_of_item==="clothing"){
               this.handleBunnyHat()
             }
           }
@@ -89,6 +94,7 @@ class PetContainer extends Component{
   }
 
   render(){
+    console.log(this.state.outfit)
     return(
 
       <div className="pet-container">
@@ -99,6 +105,8 @@ class PetContainer extends Component{
           <Pet
           animal={this.props.animals.find(animal=>animal.id===this.state.pet.animal_id)}
           pet={this.state.pet}
+          outfit={this.state.outfit}
+          animalPosition={this.state.animalPosition}
           handleAnimalPlacement={this.handleAnimalPlacement}
           handleMouseEnter={this.handleMouseEnter}
           handleMouseLeave={this.handleMouseLeave}
