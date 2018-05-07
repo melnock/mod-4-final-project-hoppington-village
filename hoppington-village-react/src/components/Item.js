@@ -15,8 +15,8 @@ const Item = (props) => {
       alt={item.id}
       style={
         (item === props.beingDragged) ? { position:"absolute",
-          left: props.dragX,
-          top: props.dragY+70,
+          left: props.dragX - 35,
+          top: props.dragY+(props.scroll-60),
           width: 100,
           height: "auto"} : {width: 100, height: "auto"}
       }

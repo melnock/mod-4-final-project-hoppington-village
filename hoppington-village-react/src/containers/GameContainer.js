@@ -40,6 +40,8 @@ class GameContainer extends React.Component{
   }
 
   handleDragStart=(e)=>{
+    let img = new Image()
+    e.dataTransfer.setDragImage(img, 0, 0)
     this.updateScroll()
     const foundItem = this.state.items.find((item)=>(item.name === e.target.id))
     // console.log("x", e.clientX, "y", e.clientY)
@@ -83,7 +85,7 @@ class GameContainer extends React.Component{
     return (
       <div className={this.state.class}>
         <div className="pet-display">
-          <ItemList handleClick={this.handleClick} handleDragEnd= {this.handleDragEnd} dragX={this.state.dragX} dragY={this.state.dragY} beingDragged={this.state.beingDragged} handleDragStart={this.handleDragStart} items={this.state.items}/>
+          <ItemList scroll={this.state.scroll} handleClick={this.handleClick} handleDragEnd= {this.handleDragEnd} dragX={this.state.dragX} dragY={this.state.dragY} beingDragged={this.state.beingDragged} handleDragStart={this.handleDragStart} items={this.state.items}/>
           <PetContainer scroll={this.state.scroll} beingDragged={this.state.beingDragged} endOfDrag={this.state.endOfDrag} animals={this.state.animals}/>
         </div>
       </div>
