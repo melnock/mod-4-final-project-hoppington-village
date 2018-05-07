@@ -61,7 +61,7 @@ class GameContainer extends React.Component{
   }
 
   handleClick=(e)=>{
-    if (this.state.cursor){
+    if (this.state.class){
       this.setState({
         class: null
       })
