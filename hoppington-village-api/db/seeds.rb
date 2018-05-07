@@ -18,5 +18,5 @@ Item.create(name: "carrot", sprite: "https://openclipart.org/image/2400px/svg_to
 Item.create(name: "party-hat", sprite: "http://clipground.com/images/party-hat-clipart-17.jpg", coordinates:{width: 150, left:140, top:20}, type_of_item: "clothing")
 Item.create(name: "bow-tie", sprite: "http://www.clker.com/cliparts/V/9/n/V/4/X/teal-bow-tie-hi.png",coordinates:{width: 100, left:140, top:380}, type_of_item: "clothing")
 Item.create(name: "shoes", sprite: "https://i.imgur.com/WX5geD2.png",coordinates:{width: 320, left:75, top:460}, type_of_item: "clothing")
-Item.create(name: "brush", sprite: "http://moziru.com/images/brush-clipart-horse-5.jpg", type_of_item: "cleaner")
+Item.create(name: "brush", sprite: "http://vignette4.wikia.nocookie.net/clubpenguin/images/0/02/655px-Hairbrush_Pin.png/revision/latest?cb=20120624184724&path-prefix=es", type_of_item: "cleaner")
 Item.create(name: "bed", sprite: "http://www.clker.com/cliparts/3/d/1/b/11954256271247028917liftarn_Cradle.svg.hi.png", type_of_item: "energy")

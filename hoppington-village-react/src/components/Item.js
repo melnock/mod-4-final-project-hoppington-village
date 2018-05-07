@@ -20,6 +20,7 @@ const Item = (props) => {
           width: 100,
           height: "auto"} : {width: 100, height: "auto"}
       }
+      draggable="true"
     />
     </div>
   )

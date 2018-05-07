@@ -47,6 +47,18 @@
   z-index: 1;
 }
 
+#carrot:hover, #party-hat:hover, #bow-tie:hover, #shoes:hover, #brush:hover, #bed:hover {
+  animation: wobble infinite 2s linear;
+}
+
+@keyframes wobble {
+  33% {
+  transform: translateX(-5px);
+  }
+  66% {
+  transform: translateX(5px);
+  } }
+
 #party-hat {
   width: 150px;
 }
