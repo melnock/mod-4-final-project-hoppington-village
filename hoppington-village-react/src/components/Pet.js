@@ -1,6 +1,7 @@
 import React from 'react'
 
 const Pet = (props) => {
+
   return (
     <div className="pet-image">
     {props.animal ?
@@ -27,7 +28,7 @@ const Pet = (props) => {
           width:props.outfit.hat.coordinates.width,
           height: "auto",
           left:props.animalPosition.left + props.outfit.hat.coordinates.left,
-          top: props.animalPosition.top + props.outfit.hat.coordinates.top,
+          top: props.animalPosition.top + props.outfit.hat.coordinates.top + (props.scroll - 210),
           zIndex: 1}}/> :
       null
       }

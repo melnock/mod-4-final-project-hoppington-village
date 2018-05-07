@@ -59,7 +59,6 @@ class PetContainer extends Component{
   }
 
   handleMouseLeave=(e)=>{
-    console.log("hi!")
     if(this.state.beingCleaned===true){
       this.handleCleanBunny()
     }
@@ -100,7 +99,6 @@ class PetContainer extends Component{
     if(this.state.pet){
       if (document.getElementById(this.state.pet.name)){
         var rect = document.getElementById(this.state.pet.name).getBoundingClientRect();
-        console.log(rect)
         this.setState({
           animalPosition: {top: rect.top, bottom:rect.bottom, left: rect.left, right: rect.right}
         })
@@ -109,7 +107,6 @@ class PetContainer extends Component{
   }
 
   render(){
-    console.log(this.state.animalPosition)
     return(
 
       <div className="pet-container">
@@ -125,6 +122,7 @@ class PetContainer extends Component{
         />
         {this.state.pet ?
           <Pet
+          scroll={this.props.scroll}
           beingCleaned={this.state.beingCleaned}
           animal={this.props.animals.find(animal=>animal.id===this.state.pet.animal_id)}
           pet={this.state.pet}
