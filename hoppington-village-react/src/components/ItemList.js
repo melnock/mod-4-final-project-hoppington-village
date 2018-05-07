@@ -14,7 +14,8 @@ const ItemList = (props) => {
         dragX={props.dragX}
         dragY={props.dragY}
         beingDragged={props.beingDragged}
-        handleDragStart={props.handleDragStart}/>
+        handleDragStart={props.handleDragStart}
+        />
       </div>
     )
   })
