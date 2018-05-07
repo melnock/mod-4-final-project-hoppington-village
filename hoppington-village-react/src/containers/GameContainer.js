@@ -47,6 +47,12 @@ class GameContainer extends React.Component{
   }
 
   handleClick=(e)=>{
+    console.log(e.target.id)
+    if (this.state.cursor){
+      this.setState({
+        class: null
+      })
+    }
     if (e.target.id==="brush") {
       this.setState({
         class: 'cursor',
@@ -59,8 +65,10 @@ class GameContainer extends React.Component{
     // console.log("class", this.state.class)
     return (
       <div className={this.state.class}>
-        <ItemList handleClick={this.handleClick} handleDragEnd= {this.handleDragEnd} dragX={this.state.dragX} dragY={this.state.dragY} beingDragged={this.state.beingDragged} handleDragStart={this.handleDragStart} items={this.state.items}/>
-        <PetContainer beingDragged={this.state.beingDragged} endOfDrag={this.state.endOfDrag} animals={this.state.animals}/>
+        <div className="pet-display">
+          <ItemList handleClick={this.handleClick} handleDragEnd= {this.handleDragEnd} dragX={this.state.dragX} dragY={this.state.dragY} beingDragged={this.state.beingDragged} handleDragStart={this.handleDragStart} items={this.state.items}/>
+          <PetContainer beingDragged={this.state.beingDragged} endOfDrag={this.state.endOfDrag} animals={this.state.animals}/>
+        </div>
       </div>
     )
   }

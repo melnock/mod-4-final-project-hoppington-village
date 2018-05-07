@@ -45,8 +45,11 @@
 #party-hat {
   width: 150px;
 }
-
+.pet-display{
+  display: flex;
+}
 .pet-container{
+  justify-content: flex-end;
   margin: auto;
   width: 900px;
   height: 600px;
@@ -54,10 +57,12 @@
 
 .pet-image{
   display: flex;
-  width: minmax(400, 600);
+  
+  width: minmax(400, 450);
 }
 
 .pet-image img{
+  align-items: center;
   height: 400px;
   position: relative;
   left: 100px;
@@ -183,4 +188,15 @@ body { overflow: hidden }
     100% {
         margin-left:50px;
     }
+}
+
+.pet-status-meters{
+  float:right;
+}
+
+.energy-meter{
+  display: flex;
+  float:right;
+  width: 3px;
+  height: 20px;
 }

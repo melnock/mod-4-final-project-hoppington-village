@@ -43,7 +43,7 @@ class PetContainer extends Component{
   handleCleanBunny=()=>{
     this.state.cleanliness > 0 ?
     this.setState({
-      cleanliness: this.state.cleanliness - 1
+      cleanliness: this.state.cleanliness - 1,
     }) : null
   }
 
@@ -53,14 +53,16 @@ class PetContainer extends Component{
         beingCleaned: true
       })
     }
-    // setTimeout(function () {
-    //     this.setState({beingCleaned: false});
-    //   }.bind(this), 10000)
+    setTimeout(function () {
+        this.setState({beingCleaned: false});
+      }.bind(this), 3000)
   }
 
   handleMouseLeave=(e)=>{
     console.log("hi!")
-    this.handleCleanBunny()
+    if(this.state.beingCleaned===true){
+      this.handleCleanBunny()
+    }
   }
 
   handleBunnyHat=(drop)=>{
@@ -106,7 +108,7 @@ class PetContainer extends Component{
   }
 
   render(){
-    console.log(this.state.outfit)
+    console.log(this.state.beingCleaned)
     return(
 
       <div className="pet-container">
