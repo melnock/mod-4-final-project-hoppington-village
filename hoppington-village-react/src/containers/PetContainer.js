@@ -56,20 +56,39 @@ class PetContainer extends Component{
   }
 
   componentWillReceiveProps(newProps) {
-    if(this.state.moused){
+    this.handleAnimalPlacement()
+      if(this.props.beingDragged){
       let dragItem = this.props.beingDragged.name
-      console.log(dragItem==="carrot", this.props.endOfDrag)
-
-        if (dragItem==="carrot") {
-          this.handleFeedBunny()
-        } else if (dragItem==="party-hat"){
-          this.handleBunnyHat()
+      if (this.props.endOfDrag){
+        console.log(dragItem==="carrot", this.props.endOfDrag)
+        console.log(this.props.endOfDrag.x < this.state.rect.right && this.props.endOfDrag.x > this.state.rect.left)
+        if (this.props.endOfDrag.x < this.state.rect.right && this.props.endOfDrag.x > this.state.rect.left){
+          if (this.props.endOfDrag.y < this.state.rect.bottom && this.props.endOfDrag.y > this.state.rect.top){
+            if (dragItem==="carrot") {
+              this.handleFeedBunny()
+            } else if (dragItem==="party-hat"){
+              this.handleBunnyHat()
+            }
+          }
         }
       }
+    }
+  }
+
+  handleAnimalPlacement=()=>{
+    if(this.state.pet){
+      if (document.getElementById(this.state.pet.name)){
+        var rect = document.getElementById(this.state.pet.name).getBoundingClientRect();
+        this.setState({
+          animalPosition: {top: rect.top, bottom:rect.bottom, left: rect.left, right: rect.right}
+        })
+      }
+    }
   }
 
   render(){
     return(
+
       <div className="pet-container">
         <PetGauges pet={this.state.pet}
           hangry= {this.state.hangry}
@@ -78,6 +97,7 @@ class PetContainer extends Component{
           <Pet
           animal={this.props.animals.find(animal=>animal.id===this.state.pet.animal_id)}
           pet={this.state.pet}
+          handleAnimalPlacement={this.handleAnimalPlacement}
           handleMouseEnter={this.handleMouseEnter}
           handleMouseLeave={this.handleMouseLeave}
           /> : "no pet yet"}
