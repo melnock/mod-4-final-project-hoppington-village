@@ -10,10 +10,15 @@ class GameContainer extends React.Component{
     dragX: null,
     dragY: null,
     endOfDrag: null,
-    class: null
+    class: null,
+    width: 0,
+    height: 0,
+    scroll: null
   }
 
   componentDidMount(){
+    this.updateWindowDimensions();
+    window.addEventListener('resize', this.updateWindowDimensions);
     fetch("http://localhost:3000/api/v1/animals")
       .then(r=>r.json())
       .then(json=> this.setState({
@@ -26,7 +31,16 @@ class GameContainer extends React.Component{
       }))
   }
 
+  updateScroll = () => {
+    this.setState({ scroll: window.scrollY })
+  }
+
+  updateWindowDimensions = () => {
+    this.setState({ width: window.innerWidth, height: window.innerHeight });
+  }
+
   handleDragStart=(e)=>{
+    this.updateScroll()
     const foundItem = this.state.items.find((item)=>(item.name === e.target.id))
     // console.log("x", e.clientX, "y", e.clientY)
     this.setState({
@@ -47,7 +61,6 @@ class GameContainer extends React.Component{
   }
 
   handleClick=(e)=>{
-    console.log(e.target.id)
     if (this.state.cursor){
       this.setState({
         class: null
@@ -66,12 +79,12 @@ class GameContainer extends React.Component{
   }
 
   render(){
-    // console.log("class", this.state.class)
+    console.log("scroll", this.state.scroll)
     return (
       <div className={this.state.class}>
         <div className="pet-display">
           <ItemList handleClick={this.handleClick} handleDragEnd= {this.handleDragEnd} dragX={this.state.dragX} dragY={this.state.dragY} beingDragged={this.state.beingDragged} handleDragStart={this.handleDragStart} items={this.state.items}/>
-          <PetContainer beingDragged={this.state.beingDragged} endOfDrag={this.state.endOfDrag} animals={this.state.animals}/>
+          <PetContainer scroll={this.state.scroll} beingDragged={this.state.beingDragged} endOfDrag={this.state.endOfDrag} animals={this.state.animals}/>
         </div>
       </div>
     )
