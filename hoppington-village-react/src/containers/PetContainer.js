@@ -27,7 +27,6 @@ class PetContainer extends Component{
   }
 
   handleFeedBunny=()=>{
-    console.log("hey")
       this.setState({
         hangry: this.state.hangry - 1,
         dragItem: null
@@ -35,14 +34,12 @@ class PetContainer extends Component{
   }
 
   handleMouseEnter=(e)=>{
-    console.log("feeed meee!")
     this.setState({
       moused: true
     })
   }
 
   handleMouseLeave=(e)=>{
-    console.log("nevermind")
       this.setState({
         moused: false
       })

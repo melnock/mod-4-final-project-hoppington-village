@@ -13,7 +13,7 @@ const Item = (props) => {
       src={item.sprite}
       alt={item.id}
       style={
-        (item === props.beingDragged) ? { position:"absolute", left: props.dragX-40, top: props.dragY-60 } : {}
+        (item === props.beingDragged) ? { position:"absolute", left: props.dragX, top: props.dragY+70 } : {}
       }
     />
     </div>
