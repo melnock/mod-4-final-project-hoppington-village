@@ -100,6 +100,7 @@ class PetContainer extends Component{
     if(this.state.pet){
       if (document.getElementById(this.state.pet.name)){
         var rect = document.getElementById(this.state.pet.name).getBoundingClientRect();
+        console.log(rect)
         this.setState({
           animalPosition: {top: rect.top, bottom:rect.bottom, left: rect.left, right: rect.right}
         })
@@ -108,10 +109,15 @@ class PetContainer extends Component{
   }
 
   render(){
-    console.log(this.state.beingCleaned)
+    console.log(this.state.animalPosition)
     return(
 
       <div className="pet-container">
+        <div className="pet-header">
+          <div className="pet-name">
+            <h1> {this.state.pet ? this.state.pet.name : "Time to pick a pet!"}</h1>
+          </div>
+        </div>
         <PetGauges pet={this.state.pet}
           hangry= {this.state.hangry}
           cleanliness= {this.state.cleanliness}

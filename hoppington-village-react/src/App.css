@@ -13,7 +13,10 @@
 }
 
 .App-header {
-  background-color: #76EE00;
+  position: relative;
+  top:0px;
+  width:100%;
+  background-color: #42f4a1;
   height: 150px;
   padding: 20px;
   color: white;
@@ -35,6 +38,7 @@
 .items{
   float:left;
   padding: 15px;
+  background-color: #a1fcf9;
 }
 
 #carrot {
@@ -48,6 +52,9 @@
 }
 .pet-display{
   display: flex;
+  background-color: #a1fcf9;
+  padding: 15px;
+
 }
 .pet-container{
   justify-content: flex-end;
@@ -57,16 +64,19 @@
 }
 
 .pet-image{
+  border-radius: 30px;
   display: flex;
-
-  width: minmax(400, 450);
+  align-items: center;
+  justify-content: center;
+  background-color: #f9f99f;
+  width: minmax(400, 400);
+  padding-top: 80px;
+  padding-bottom: 10px;
 }
 
 .pet-image img{
-  align-items: center;
-  height: 400px;
-  position: relative;
-  left: 100px;
+  height: auto;
+  width: 400px;
 }
 
 
@@ -75,7 +85,7 @@
 html,
 body,
 #bubbles { height: 100% }
-body { overflow: hidden }
+/* body { overflow: hidden } */
 #bubbles { padding: 100px 0 }
 .bubble {
     width: 100px;
@@ -191,11 +201,33 @@ body { overflow: hidden }
     }
 }
 
+.pet-header{
+  background-color: #a1fcf9;
+  padding: 20px;
+}
+.pet-name{
+  color: #FFF;
+  font-family:serif;
+  border-radius: 12px;
+  box-shadow: 0 0 10px #FFF;
+  padding: 3px 0;
+  width: 150px;
+  background-color: #42f4a1;
+  text-decoration: none;
+}
+
 .pet-status-meters{
+  background-color: #a1fcf9;
   float:right;
+  color: #FFF;
+  font-family:serif;
+  padding-left: 10px;
 }
 
 .energy-meter{
+  background-color: #FFF;
+  border-radius: 2px;
+  box-shadow: 0 0 10px #FFF;
   display: flex;
   float:right;
   width: 3px;

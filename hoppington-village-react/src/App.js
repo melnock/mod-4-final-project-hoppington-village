@@ -12,8 +12,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src="https://i.imgur.com/JtH23o7.png" className="App-logo" alt="logo" />
-          <h1 className="App-title">Hoppington Village</h1>
+          <img src="https://i.imgur.com/sv2rOVQ.png" alt="logo" />
         </header>
           { this.state.currentUser ?
           <Login /> :
