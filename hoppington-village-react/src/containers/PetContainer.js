@@ -39,6 +39,12 @@ class PetContainer extends Component{
         dragItem: null
       })
   }
+  handleRestBunny=()=>{
+      this.setState({
+        energy: this.state.energy - 1,
+        dragItem: null
+      })
+  }
 
   handleCleanBunny=()=>{
     this.state.cleanliness > 0 ?
@@ -66,10 +72,12 @@ class PetContainer extends Component{
   }
 
   handleBunnyHat=(drop)=>{
+    const setter = this.state.dragItem.name === "party-hat" || this.state.dragItem.name==="bow-tie" ? `hat` : `shoes`
+
     this.setState({
       outfit:{
         ...this.state.outfit,
-        hat: this.state.dragItem
+        [setter]: this.state.dragItem
       }
     })
   }
@@ -89,6 +97,8 @@ class PetContainer extends Component{
               this.handleFeedBunny()
             } else if (this.state.dragItem.type_of_item==="clothing"){
               this.handleBunnyHat()
+            }else if (this.state.dragItem.type_of_item==="energy"){
+              this.handleRestBunny()
             }
           }
         }
@@ -109,7 +119,7 @@ class PetContainer extends Component{
   }
 
   render(){
-    console.log(this.state.animalPosition)
+    console.log(this.state.outfit)
     return(
 
       <div className="pet-container">

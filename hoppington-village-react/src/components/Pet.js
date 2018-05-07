@@ -31,7 +31,19 @@ const Pet = (props) => {
           zIndex: 1}}/> :
       null
       }
-
+      {props.outfit.shoes ?
+        <img className="pet-shoes"
+          id={props.outfit.shoes.id}
+          src={props.outfit.shoes.sprite}
+          alt="dapper-shoes"
+          style={{position:"absolute",
+            width:props.outfit.shoes.coordinates.width,
+            height: "auto",
+            left:props.animalPosition.left + props.outfit.shoes.coordinates.left,
+            top: props.animalPosition.top + props.outfit.shoes.coordinates.top,
+            zIndex: 1}}/> :
+        null
+        }
 
     </div>
   )
