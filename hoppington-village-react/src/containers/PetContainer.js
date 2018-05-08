@@ -183,10 +183,10 @@ class PetContainer extends Component{
       <div className="pet-container">
         <div className="pet-header">
           <div className="pet-owner">
-          <h1> {this.state.pet ? this.props.currentUser+"'s pet: " : "Time to pick a pet!"}</h1>
+          <h1> {this.state.pet ? this.props.currentUser+"'s pet: " : "Welcome to Hoppington Village!"}</h1>
           </div>
           <div className="pet-name">
-          <h1> {this.state.pet ? this.state.pet.name : "Time to pick a pet!"}</h1>
+          <h1> {this.state.pet ? this.state.pet.name : null}</h1>
           </div>
         </div>
         <PetGauges pet={this.state.pet}

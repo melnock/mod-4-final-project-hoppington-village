@@ -35,6 +35,59 @@
   to { transform: rotate(360deg); }
 }
 
+/* input{
+  border: 0px;
+  border-bottom: 1px solid black;
+  padding: 3px;
+} */
+
+.form-stuff{
+  display: flex;
+  justify-content: center;
+  margin: 5px;
+}
+.text-field-component{
+  margin: 20px;
+  width: 180px;
+  height: 30px;
+  color: purple;
+}
+
+
+.text-field-component input {
+  width: 170px;
+  height: 28px;
+  border: 0px;
+  border-bottom:1px solid purple;
+
+}
+
+.text-field-component label {
+  color: purple;
+  position: absolute;
+  transform: translateX(-85px) translateY(-25px);
+}
+
+
+
+/* input[type=text] label{
+  border: 0px;
+  border-bottom: 1px solid black;
+  padding: 3px;
+} */
+
+input[type=submit]{
+  color: #FFF;
+  border: 1px solid #FFF;
+  margin: 5px;
+  background-color: #a1fcf9;
+}
+
+input:hover{
+  background-color: #42f4a1;
+  box-shadow: 0 0 10px #FFF;
+}
+
 .items{
   float:left;
   padding: 15px;
