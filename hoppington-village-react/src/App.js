@@ -19,7 +19,7 @@ class App extends Component {
   }
 
   authFetched = (auth, username) => {
-    console.log("hellloooo")
+    console.log(username)
     localStorage.auth = JSON.stringify(auth);
     this.setState({ auth, currentUser:username });
   }

@@ -11,10 +11,7 @@ class PetSetUp extends React.Component {
     })
   }
 
-  handleBunnyCreation =(e)=>{
-    e.preventDefault()
 
-  }
 
   render(){
     return (
@@ -22,8 +19,9 @@ class PetSetUp extends React.Component {
         <h1 className="pet-owner">Welcome to Hoppington Village, {this.props.auth.username}! </h1>
         <h2> It is time to choose your pet!</h2>
         <h2> What do you want to name your pet? </h2>
-        <form onSubmit={this.handleBunnyCreation} >
+        <form onSubmit={(e)=>{this.props.handleBunnyCreation(e, this.state.name)}} >
           <input name="name" value={this.state.name} onChange={this.handleChange}/>
+          <br/><input type="submit"/>
         </form>
       </div>
     )

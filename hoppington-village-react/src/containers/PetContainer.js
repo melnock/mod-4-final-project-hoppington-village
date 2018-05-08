@@ -106,6 +106,36 @@ class PetContainer extends Component{
     })
   }
 
+  handleBunnyCreation =(e, petname)=>{
+    e.preventDefault()
+    const newPet={
+      user_id: this.props.auth.id,
+      animal_id: 1,
+      name: petname,
+      energy_level: this.state.energy,
+      cleanliness: this.state.cleanliness,
+      hunger_level: this.state.hangry
+    }
+    console.log(this.props.auth, newPet)
+    const token= `Token token=${ this.props.auth.token }`
+
+    fetch("http://localhost:3000/api/v1/pets", {
+      method: "POST",
+      headers: {
+        "content-type":"application/json",
+        "accept":"application/javascript",
+        "authorization": token
+      },
+      body: JSON.stringify(newPet)
+    })
+    .then(r=>r.json())
+    .then(json=>{
+      this.setState({
+        pet: json
+      })
+    })
+  }
+
   componentWillReceiveProps(newProps) {
     this.handleAnimalPlacement()
       if(this.props.beingDragged && this.props.beingDragged!=="brush"){
@@ -182,7 +212,7 @@ class PetContainer extends Component{
             scroll={this.props.scroll}
             animal={this.props.animals}
             handleAnimalPlacement={this.handleAnimalPlacement}
-
+            handleBunnyCreation={this.handleBunnyCreation}
           />
           }
 

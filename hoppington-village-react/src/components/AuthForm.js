@@ -19,10 +19,8 @@ class AuthForm extends React.Component {
   }
 
   handleLoginFetch(auth, username) {
-    console.log("!!!!", JSON.stringify(auth), this.props.url)
     let url;
     if (this.props.url) {url=this.props.url} else {url="http://localhost:3000/sessions"}
-    console.log(url);
     fetch(url, {
       method: "POST",
       headers: {
