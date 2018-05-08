@@ -10,7 +10,7 @@ class RegisterForm extends React.Component{
     return (
       <div>
       Register Form:
-        <AuthForm { ...this.props } url={this.state.url}/>
+        <AuthForm { ...this.props } authFetched={this.authFetched} url={this.state.url}/>
       </div>
     )
   }
