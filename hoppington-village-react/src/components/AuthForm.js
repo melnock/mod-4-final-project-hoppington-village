@@ -59,7 +59,7 @@ class AuthForm extends React.Component {
     return (
       <div>
       {this.state.errors.length > 0 ? this.errors() : null}
-        <form onSubmit={this.login}>
+        <form name="user" onSubmit={this.login}>
           Username:
           <input
           name="username"
