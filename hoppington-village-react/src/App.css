@@ -79,6 +79,7 @@
 
 input[type=submit]{
   color: #FFF;
+  font-size: 1.5em;
   border: 1px solid #FFF;
   margin: 5px;
   background-color: #a1fcf9;
@@ -134,6 +135,9 @@ input:hover{
 }
 
 .pet-image{
+  font-size: 1em;
+  font-family: serif;
+  color: purple;
   border-radius: 30px;
   display: flex;
   align-items: center;
@@ -144,11 +148,22 @@ input:hover{
   padding-bottom: 10px;
 }
 
+.pet-name img{
+  width:100px;
+  height:120px;
+}
 .pet-image img{
   height: auto;
   width: 400px;
 }
 
+/* img {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+} */
 
 /* sleepyz */
 

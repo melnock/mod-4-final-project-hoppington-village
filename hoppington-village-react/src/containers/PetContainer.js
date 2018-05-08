@@ -186,7 +186,7 @@ class PetContainer extends Component{
           <h1> {this.state.pet ? this.props.currentUser+"'s pet: " : "Welcome to Hoppington Village!"}</h1>
           </div>
           <div className="pet-name">
-          <h1> {this.state.pet ? this.state.pet.name : null}</h1>
+            {this.state.pet ? <h1>this.state.pet.name</h1> : <img src="https://i.imgur.com/JtH23o7.png" alt="dancing" />}
           </div>
         </div>
         <PetGauges pet={this.state.pet}

@@ -15,8 +15,7 @@ class PetSetUp extends React.Component {
 
   render(){
     return (
-      <div className="form-stuff">
-        <h1 className="pet-owner">Welcome to Hoppington Village, {this.props.auth.username}! </h1>
+      <div className="form-stuff pet-image">
         <h2> It is time to choose your pet!</h2>
         <h2> What do you want to name your pet? </h2>
         <form onSubmit={(e)=>{this.props.handleBunnyCreation(e, this.state.name)}} >
