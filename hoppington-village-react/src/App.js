@@ -7,7 +7,8 @@ import RegisterForm from './components/RegisterForm'
 
 class App extends Component {
   state={
-    auth: null
+    auth: null,
+    currentUser: null
   }
 
   componentDidMount() {
@@ -17,10 +18,9 @@ class App extends Component {
     }
   }
 
-  authFetched = (auth) => {
-      console.log("woo")
+  authFetched = (auth, username) => {
     localStorage.auth = JSON.stringify(auth);
-    this.setState({ auth });
+    this.setState({ auth, currentUser:username });
   }
 
   logout = () => {
@@ -29,14 +29,14 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.auth)
+    console.log("hi", this.state.auth)
     return (
       <div className="App">
         <header className="App-header">
           <img src="https://i.imgur.com/sv2rOVQ.png" alt="logo"  />
         </header>
           { this.state.auth && this.state.auth.status !== 404 ?
-          <GameContainer auth={this.state.auth}/> :
+          <GameContainer logout={this.logout} auth={this.state.auth} currentUser={this.state.currentUser}/> :
           <div>
             <LoginForm authFetched={this.authFetched}/>
             <RegisterForm authFetched={this.authFetched}/>
