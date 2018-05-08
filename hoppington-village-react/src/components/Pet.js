@@ -6,18 +6,30 @@ const Pet = (props) => {
     {props.animal ?
        <img id={props.pet.name} onMouseEnter={props.handleMouseEnter} onMouseLeave={props.handleMouseLeave} src={props.cleanliness > 2 ? props.animal.sprites.main : props.animal.sprites.clean} /> :
        null }
-     {props.beingCleaned ?
-       <div>
-       <div id="bubbles">
-       <div className="bubble x1"></div>
-       <div className="bubble x2"></div>
-       <div className="bubble x3"></div>
-       <div className="bubble x4"></div>
-       <div className="bubble x5"></div>
-       </div>
-       </div>
-       : null
-     }
+       {props.beingCleaned ?
+         <div>
+         <div id="bubbles">
+         <div className="bubble x1"></div>
+         <div className="bubble x2"></div>
+         <div className="bubble x3"></div>
+         <div className="bubble x4"></div>
+         <div className="bubble x5"></div>
+         </div>
+         </div>
+         : null
+       }
+       {props.gettingRest ?
+          <div>
+          <div id="sleepyz">
+          <div className="sleepy s1"></div>
+          <div className="sleepy s2"></div>
+          <div className="sleepy s3"></div>
+          <div className="sleepy s4"></div>
+          <div className="sleepy s5"></div>
+          </div>
+          </div>
+          : null
+        }
     {props.outfit.hat ?
       <img className="pet-hat"
         id={props.outfit.hat.id}

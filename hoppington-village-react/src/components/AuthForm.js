@@ -54,23 +54,29 @@ class AuthForm extends React.Component {
     )
   }
 
+
+
   render(){
     console.log(this.props)
     return (
-      <div>
+      <div className="form-stuff">
       {this.state.errors.length > 0 ? this.errors() : null}
         <form name="user" onSubmit={this.login}>
-          Username:
-          <input
-          name="username"
-          onChange={this.change}
-          value={this.state.username}/><br/>
-          Password:
-          <input
-          onChange={this.change}
-          name="password"
-          type="password"
-          value={this.state.password}/><br/>
+          <div className="text-field-component">
+            <input
+            name="username"
+            onChange={this.change}
+            value={this.state.username}
+            placeholder="Username"/><br/>
+          </div>
+          <div className="text-field-component">
+            <input
+            onChange={this.change}
+            name="password"
+            type="password"
+            placeholder="Password"
+            value={this.state.password}/><br/>
+          </div>
           <input type="submit"/>
         </form>
       </div>
