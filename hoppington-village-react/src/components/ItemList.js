@@ -7,6 +7,7 @@ const ItemList = (props) => {
     return (
       <div>
        <Item
+        scroll = {props.scroll}
         handleClick={props.handleClick}
         key={item.id}
         item={item}

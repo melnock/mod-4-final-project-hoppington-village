@@ -19,6 +19,18 @@ const Pet = (props) => {
        </div>
        : null
      }
+     {props.gettingRest ?
+       <div>
+       <div id="sleepyz">
+       <div className="sleepy s1"></div>
+       <div className="sleepy s2"></div>
+       <div className="sleepy s3"></div>
+       <div className="sleepy s4"></div>
+       <div className="sleepy s5"></div>
+       </div>
+       </div>
+       : null
+     }
     {props.outfit.hat ?
       <img className="pet-hat"
         id={props.outfit.hat.id}
@@ -41,7 +53,7 @@ const Pet = (props) => {
             width:props.outfit.shoes.coordinates.width,
             height: "auto",
             left:props.animalPosition.left + props.outfit.shoes.coordinates.left,
-            top: props.animalPosition.top + props.outfit.shoes.coordinates.top,
+            top: props.animalPosition.top + props.outfit.shoes.coordinates.top + (props.scroll - 210),
             zIndex: 1}}/> :
         null
         }

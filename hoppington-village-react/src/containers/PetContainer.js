@@ -19,7 +19,8 @@ class PetContainer extends Component{
       pants: null,
       shoes: null
     },
-    beingCleaned: false
+    beingCleaned: false,
+    gettingRest: false
   }
 
   componentDidMount(){
@@ -45,8 +46,12 @@ class PetContainer extends Component{
   handleRestBunny=()=>{
       this.setState({
         energy: this.state.energy - 1,
-        dragItem: null
+        dragItem: null,
+        gettingRest: true
       })
+    setTimeout(function () {
+        this.setState({gettingRest: false});
+      }.bind(this), 5000)
   }
 
   handleCleanBunny=()=>{
@@ -91,7 +96,7 @@ class PetContainer extends Component{
           dragItem: this.props.beingDragged
         })
       }
-      if (newProps.endOfDrag){
+      if (newProps.endOfDrag && this.state.dragItem){
         console.log(newProps.endOfDrag.x < this.state.animalPosition.right && newProps.endOfDrag.x > this.state.animalPosition.left)
         if (newProps.endOfDrag.x < this.state.animalPosition.right && newProps.endOfDrag.x > this.state.animalPosition.left){
           if (newProps.endOfDrag.y < this.state.animalPosition.bottom && newProps.endOfDrag.y > this.state.animalPosition.top){
@@ -126,7 +131,7 @@ class PetContainer extends Component{
   }
 
   render(){
-    console.log(this.state.outfit)
+    console.log("whaaat", this.state.gettingRest)
     return(
 
       <div className="pet-container">
@@ -144,6 +149,7 @@ class PetContainer extends Component{
           <Pet
           scroll={this.props.scroll}
           beingCleaned={this.state.beingCleaned}
+          gettingRest={this.state.gettingRest}
           animal={this.props.animals.find(animal=>animal.id===this.state.pet.animal_id)}
           pet={this.state.pet}
           outfit={this.state.outfit}
