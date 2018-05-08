@@ -11,7 +11,6 @@ class AuthForm extends React.Component {
   state = this.DEFAULT_STATE
 
   login = (event) => {
-    console.log(this.props)
     event.preventDefault()
     const username = this.state.username
     const password = this.state.password
@@ -23,7 +22,7 @@ class AuthForm extends React.Component {
     console.log("!!!!", JSON.stringify(auth), this.props.url)
     let url;
     if (this.props.url) {url=this.props.url} else {url="http://localhost:3000/sessions"}
-
+    console.log(url);
     fetch(url, {
       method: "POST",
       headers: {
