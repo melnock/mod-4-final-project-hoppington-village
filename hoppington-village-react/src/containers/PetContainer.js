@@ -131,7 +131,6 @@ class PetContainer extends Component{
   }
 
   render(){
-    console.log("whaaat", this.state.gettingRest)
     return(
 
       <div className="pet-container">
