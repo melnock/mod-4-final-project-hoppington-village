@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Pet from '../components/Pet'
+import PetSetUp from '../components/PetSetUp'
 import PetGauges from "../components/PetGauges"
+
 
 
 class PetContainer extends Component{
@@ -25,22 +27,31 @@ class PetContainer extends Component{
 
   componentDidMount(){
     const token= `Token token=${ this.props.auth.token }`
-    fetch("http://localhost:3000/api/v1/pets/1",{
+    this.fetchPets(token)
+  }
+
+  fetchPets=(token)=>{
+    fetch("http://localhost:3000/api/v1/pets",{
       headers: {
         "Content-Type":"application/json",
         "Accept":"application/javascript",
         "Authorization": token
       }})
       .then(r=>r.json())
-      .then(json=> this.setState({
-        pet: json,
-        hangry: json.hunger_level,
-        energy: json.energy_level,
-        cleanliness: json.cleanliness,
-      }))
-      this.hangry= setInterval(()=>{ this.state.hangry < 10 ?  this.setState({hangry: this.state.hangry + 1}) : null}, 60000)
-      this.cleanry = setInterval(()=>{ this.state.cleanliness < 10 ?  this.setState({cleanliness: this.state.cleanliness + 1}) : null}, 120000)
-      this.energyry = setInterval(()=>{ this.state.energy < 10 ?  this.setState({energy: this.state.energy + 1}) : null}, 45000)
+      .then(json=>{
+        const findpet = json.find((pet) => (pet.user_id === this.props.auth.user_id))
+        if (findpet){
+          this.setState({
+            pet: findpet,
+            hangry: findpet.hunger_level,
+            energy: findpet.energy_level,
+            cleanliness: findpet.cleanliness,
+          })
+          this.hangry= setInterval(()=>{ this.state.hangry < 10 ?  this.setState({hangry: this.state.hangry + 1}) : null}, 60000)
+          this.cleanry = setInterval(()=>{ this.state.cleanliness < 10 ?  this.setState({cleanliness: this.state.cleanliness + 1}) : null}, 120000)
+          this.energyry = setInterval(()=>{ this.state.energy < 10 ?  this.setState({energy: this.state.energy + 1}) : null}, 45000)
+        }
+      })
   }
 
   handleFeedBunny=()=>{
@@ -155,18 +166,25 @@ class PetContainer extends Component{
         />
         {this.state.pet ?
           <Pet
-          scroll={this.props.scroll}
-          beingCleaned={this.state.beingCleaned}
-          gettingRest={this.state.gettingRest}
-          cleanliness={this.state.cleanliness}
-          animal={this.props.animals.find(animal=>animal.id===this.state.pet.animal_id)}
-          pet={this.state.pet}
-          outfit={this.state.outfit}
-          animalPosition={this.state.animalPosition}
-          handleAnimalPlacement={this.handleAnimalPlacement}
-          handleMouseEnter={this.handleMouseEnter}
-          handleMouseLeave={this.handleMouseLeave}
-          /> : "no pet yet"}
+            scroll={this.props.scroll}
+            beingCleaned={this.state.beingCleaned}
+            gettingRest={this.state.gettingRest}
+            cleanliness={this.state.cleanliness}
+            animal={this.props.animals.find(animal=>animal.id===this.state.pet.animal_id)}
+            pet={this.state.pet}
+            outfit={this.state.outfit}
+            animalPosition={this.state.animalPosition}
+            handleAnimalPlacement={this.handleAnimalPlacement}
+            handleMouseEnter={this.handleMouseEnter}
+            handleMouseLeave={this.handleMouseLeave}
+          /> : <PetSetUp
+            auth = {this.props.auth}
+            scroll={this.props.scroll}
+            animal={this.props.animals}
+            handleAnimalPlacement={this.handleAnimalPlacement}
+
+          />
+          }
 
       </div>
     )
