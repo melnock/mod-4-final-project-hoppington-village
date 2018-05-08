@@ -40,6 +40,14 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
+# Added at 2018-05-03 10:56:14 -0400 by graham.troyer-joy:
+gem "jwt", "~> 2.1"
+
+# Added at 2018-05-03 11:13:34 -0400 by graham.troyer-joy:
+gem "dotenv-rails", "~> 2.4"
+
+# Added at 2018-05-01 15:36:11 -0400 by graham.troyer-joy:
+gem "faker", "~> 1.8"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
