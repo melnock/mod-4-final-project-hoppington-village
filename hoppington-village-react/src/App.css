@@ -12,6 +12,7 @@
   height: 100px;
 }
 
+
 .App-header {
   position: relative;
   top:0px;
@@ -24,6 +25,10 @@
 
 .App-title {
   font-size: 1.5em;
+}
+
+.hopButton {
+  float: right;
 }
 
 .App-intro {
@@ -39,6 +44,10 @@
   float:left;
   padding: 15px;
   background-color: #a1fcf9;
+}
+
+.hidden{
+  display: none;
 }
 
 #carrot {

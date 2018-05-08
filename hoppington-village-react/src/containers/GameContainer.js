@@ -2,6 +2,7 @@ import React from 'react'
 import PetContainer from './PetContainer'
 import ItemList from '../components/ItemList'
 import LogoutButton from '../components/LogoutButton'
+import HopContainer from './HopContainer'
 
 class GameContainer extends React.Component{
   state = {
@@ -14,7 +15,8 @@ class GameContainer extends React.Component{
     class: null,
     width: 0,
     height: 0,
-    scroll: null
+    scroll: null,
+    hopping: false
   }
 
   componentDidMount(){
@@ -92,14 +94,26 @@ class GameContainer extends React.Component{
     }
   }
 
+  handleHop = () => {
+    this.setState({
+      hopping: !this.state.hopping
+    })
+  }
+
   render(){
-    console.log("scroll", this.state.scroll)
+    console.log(this.state.hopping)
     return (
       <div className={this.state.class}>
-        <div className="pet-display">
-          <ItemList scroll={this.state.scroll} handleClick={this.handleClick} handleDragEnd= {this.handleDragEnd} dragX={this.state.dragX} dragY={this.state.dragY} beingDragged={this.state.beingDragged} handleDragStart={this.handleDragStart} items={this.state.items}/>
-          <PetContainer scroll={this.state.scroll} beingDragged={this.state.beingDragged} endOfDrag={this.state.endOfDrag} animals={this.state.animals} auth={this.props.auth} currentUser={this.props.currentUser}/>
+      {this.state.hopping ?
+        <div className="hop-game">
+          <HopContainer handleHop={this.handleHop}/>
         </div>
+        :
+          <div className="pet-display">
+            <ItemList scroll={this.state.scroll} handleClick={this.handleClick} handleDragEnd= {this.handleDragEnd} dragX={this.state.dragX} dragY={this.state.dragY} beingDragged={this.state.beingDragged} handleDragStart={this.handleDragStart} items={this.state.items}/>
+            <PetContainer scroll={this.state.scroll} beingDragged={this.state.beingDragged} endOfDrag={this.state.endOfDrag} animals={this.state.animals} auth={this.props.auth} currentUser={this.props.currentUser} handleHop={this.handleHop}/>
+          </div>
+        }
       </div>
     )
   }

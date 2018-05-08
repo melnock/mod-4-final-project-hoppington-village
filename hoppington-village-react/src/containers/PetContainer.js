@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Pet from '../components/Pet'
 import PetSetUp from '../components/PetSetUp'
 import PetGauges from "../components/PetGauges"
+import GoForHop from '../components/GoForHop'
 
 
 
@@ -195,6 +196,7 @@ class PetContainer extends Component{
           energy= {this.state.energy}
         />
         {(this.state.pet && this.props.animals) ?
+        <div>
           <Pet
             scroll={this.props.scroll}
             beingCleaned={this.state.beingCleaned}
@@ -207,7 +209,10 @@ class PetContainer extends Component{
             handleAnimalPlacement={this.handleAnimalPlacement}
             handleMouseEnter={this.handleMouseEnter}
             handleMouseLeave={this.handleMouseLeave}
-          /> : <PetSetUp
+          />
+          <GoForHop handleHop={this.props.handleHop}/>
+        </div>
+          : <PetSetUp
             auth = {this.props.auth}
             scroll={this.props.scroll}
             animal={this.props.animals}
@@ -215,7 +220,6 @@ class PetContainer extends Component{
             handleBunnyCreation={this.handleBunnyCreation}
           />
           }
-
       </div>
     )
   }
