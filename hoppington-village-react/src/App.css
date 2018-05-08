@@ -44,6 +44,7 @@
 .form-stuff{
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   margin: 5px;
 }
 .text-field-component{
@@ -149,12 +150,11 @@ input:hover{
 }
 
 
-/* bubbles */
+/* sleepyz */
 
 html,
 body,
 #sleepyz { height: 100% }
-/* body { overflow: hidden } */
 #sleepyz { padding: 100px 0 }
 .sleepy {
     width: 100px;
@@ -412,6 +412,8 @@ body,
 }
 
 .pet-name{
+  display: flex;
+  justify-content: center;
   color: #FFF;
   font-family:serif;
   border-radius: 12px;
@@ -419,6 +421,11 @@ body,
   padding: 3px 0;
   width: 120px;
   background-color: #42f4a1;
+}
+
+.pet-name h1{
+  width: 80%;
+
 }
 
 .pet-status-meters{
