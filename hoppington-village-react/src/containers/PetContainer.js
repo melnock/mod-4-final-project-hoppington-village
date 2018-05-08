@@ -136,8 +136,11 @@ class PetContainer extends Component{
 
       <div className="pet-container">
         <div className="pet-header">
+          <div className="pet-owner">
+          <h1> {this.state.pet ? "bunny_tamer"+"'s pet: " : "Time to pick a pet!"}</h1>
+          </div>
           <div className="pet-name">
-            <h1> {this.state.pet ? this.state.pet.name : "Time to pick a pet!"}</h1>
+          <h1> {this.state.pet ? this.state.pet.name : "Time to pick a pet!"}</h1>
           </div>
         </div>
         <PetGauges pet={this.state.pet}
@@ -150,6 +153,7 @@ class PetContainer extends Component{
           scroll={this.props.scroll}
           beingCleaned={this.state.beingCleaned}
           gettingRest={this.state.gettingRest}
+          cleanliness={this.state.cleanliness}
           animal={this.props.animals.find(animal=>animal.id===this.state.pet.animal_id)}
           pet={this.state.pet}
           outfit={this.state.outfit}

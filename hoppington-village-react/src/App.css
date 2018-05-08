@@ -337,18 +337,31 @@ body,
 }
 
 .pet-header{
+  display: flex;
+  justify-content: space-between;
+
   background-color: #a1fcf9;
-  padding: 20px;
+  padding: 20px 0px 20px 20px ;
 }
+
+.pet-owner{
+  color: #FFF;
+  font-family:serif;
+  border-radius: 12px;
+  box-shadow: 0 0 10px #FFF;
+  margin-right: 30px;
+  padding: 10px;
+  background-color: #42f4a1;
+}
+
 .pet-name{
   color: #FFF;
   font-family:serif;
   border-radius: 12px;
   box-shadow: 0 0 10px #FFF;
   padding: 3px 0;
-  width: 150px;
+  width: 120px;
   background-color: #42f4a1;
-  text-decoration: none;
 }
 
 .pet-status-meters{

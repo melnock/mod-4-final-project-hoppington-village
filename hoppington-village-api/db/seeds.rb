@@ -11,7 +11,7 @@ Pet.all.destroy_all
 Item.all.destroy_all
 
 
-Animal.create(sprites:{"main":"http://images6.fanpop.com/image/photos/38500000/Angel-Bunny-angel-bunny-38523354-963-829.png", "dancing":"https://i.imgur.com/JtH23o7.png"}, name: "bunny"  )
+Animal.create(sprites:{"main":"http://images6.fanpop.com/image/photos/38500000/Angel-Bunny-angel-bunny-38523354-963-829.png", "dancing":"https://i.imgur.com/JtH23o7.png", "clean": "https://pre00.deviantart.net/b02e/th/pre/f/2015/101/4/f/vector__153___angel_bunny_by_dashiesparkle-d8pdje6.png"}, name: "bunny"  )
 User.create(username: "bunny_tamer", password: "123")
 Pet.create(name: "angel", user_id: 1, animal_id: 1, cleanliness: 10, mood: "calm", energy_level: 10, hunger_level: 10)
 Item.create(name: "carrot", sprite: "https://openclipart.org/image/2400px/svg_to_png/175279/carrot.png", type_of_item: "food")

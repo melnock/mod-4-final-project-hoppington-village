@@ -1,11 +1,10 @@
 import React from 'react'
 
 const Pet = (props) => {
-
   return (
     <div className="pet-image">
     {props.animal ?
-       <img id={props.pet.name} onMouseEnter={props.handleMouseEnter} onMouseLeave={props.handleMouseLeave} src={props.animal.sprites.main} /> :
+       <img id={props.pet.name} onMouseEnter={props.handleMouseEnter} onMouseLeave={props.handleMouseLeave} src={props.cleanliness > 2 ? props.animal.sprites.main : props.animal.sprites.clean} /> :
        null }
      {props.beingCleaned ?
        <div>
@@ -15,18 +14,6 @@ const Pet = (props) => {
        <div className="bubble x3"></div>
        <div className="bubble x4"></div>
        <div className="bubble x5"></div>
-       </div>
-       </div>
-       : null
-     }
-     {props.gettingRest ?
-       <div>
-       <div id="sleepyz">
-       <div className="sleepy s1"></div>
-       <div className="sleepy s2"></div>
-       <div className="sleepy s3"></div>
-       <div className="sleepy s4"></div>
-       <div className="sleepy s5"></div>
        </div>
        </div>
        : null
@@ -52,7 +39,7 @@ const Pet = (props) => {
           style={{position:"absolute",
             width:props.outfit.shoes.coordinates.width,
             height: "auto",
-            left:props.animalPosition.left + props.outfit.shoes.coordinates.left,
+            left:props.animalPosition.left + props.outfit.shoes.coordinates.left - 45,
             top: props.animalPosition.top + props.outfit.shoes.coordinates.top + (props.scroll - 210),
             zIndex: 1}}/> :
         null

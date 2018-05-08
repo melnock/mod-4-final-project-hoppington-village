@@ -1,8 +1,13 @@
 class Api::V1::UsersController < ApplicationController
+  skip_before_action :authenticate!, only: :create
 
   def create
     @user = User.create(user_params)
-    render json: @user
+    if @user
+      render json: @user
+    else
+      render json: { errors: @user.errors.full_messages}
+    end
   end
 
   def index
