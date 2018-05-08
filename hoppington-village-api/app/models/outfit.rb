@@ -1,4 +1,5 @@
 class Outfit < ApplicationRecord
-  has_many :outfits
+  belongs_to :pet
+  belongs_to :item
 
 end
