@@ -18,6 +18,7 @@ class App extends Component {
   }
 
   authFetched = (auth) => {
+      console.log("woo")
     localStorage.auth = JSON.stringify(auth);
     this.setState({ auth });
   }
@@ -28,16 +29,17 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state.auth)
     return (
       <div className="App">
         <header className="App-header">
-          <img src="https://i.imgur.com/sv2rOVQ.png" alt="logo" />
+          <img src="https://i.imgur.com/sv2rOVQ.png" alt="logo"  />
         </header>
-          { this.state.auth ?
-          <GameContainer /> :
+          { this.state.auth && this.state.auth.status !== 404 ?
+          <GameContainer auth={this.state.auth}/> :
           <div>
-            <LoginForm />
-            <RegisterForm />
+            <LoginForm authFetched={this.authFetched}/>
+            <RegisterForm authFetched={this.authFetched}/>
           </div>
         }
       </div>

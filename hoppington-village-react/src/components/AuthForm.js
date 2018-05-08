@@ -11,19 +11,21 @@ class AuthForm extends React.Component {
   state = this.DEFAULT_STATE
 
   login = (event) => {
+    console.log(this.props)
     event.preventDefault()
     const username = this.state.username
     const password = this.state.password
     const auth = {username, password}
-
+    this.handleLoginFetch(auth)
   }
 
   handleLoginFetch(auth) {
-    fetch(this.props.url, {
+    console.log("heeelp!!")
+    fetch("http://localhost:3000/sessions", {
       method: "POST",
       headers: {
         "Content-Type":"application/json",
-        "Accept":"application/javascript"
+        "Accept":"application/javascript",
       },
       body: JSON.stringify(auth)
     }).then(res=>res.json())
@@ -32,8 +34,8 @@ class AuthForm extends React.Component {
           this.setState({errors: json.errors})
         } else {
           this.setState({...this.DEFAULT_STATE})
-          this.props.authSet(json)
-          this.props.history.push("/")
+          this.props.authFetched(json)
+          // this.props.history.push("/")
         }
       })
   }
@@ -53,23 +55,23 @@ class AuthForm extends React.Component {
   }
 
   render(){
+    console.log(this.state.errors)
     return (
       <div>
+      {this.state.errors.length > 0 ? this.errors() : null}
         <form onSubmit={this.login}>
           Username:
           <input
           name="username"
           onChange={this.change}
-          value={this.state.username}
-          id="username"/><br/>
+          value={this.state.username}/><br/>
           Password:
           <input
           onChange={this.change}
           name="password"
           type="password"
-          id="password"
           value={this.state.password}/><br/>
-          <button type="submit">Submit</button>
+          <input type="submit"/>
         </form>
       </div>
     )

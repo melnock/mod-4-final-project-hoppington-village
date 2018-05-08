@@ -6,7 +6,7 @@ class LoginForm extends React.Component{
     return (
       <div>
       Login Form:
-        <AuthForm { ...this.props } url="http://localhost:3000/sessions"/>
+        <AuthForm { ...this.props } authFetched={this.authFetched}/>
       </div>
     )
   }

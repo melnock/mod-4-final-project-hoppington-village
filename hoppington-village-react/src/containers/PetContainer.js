@@ -24,7 +24,13 @@ class PetContainer extends Component{
   }
 
   componentDidMount(){
-    fetch("http://localhost:3000/api/v1/pets/1")
+    const token= `Token token=${ this.props.auth.token }`
+    fetch("http://localhost:3000/api/v1/pets/1",{
+      headers: {
+        "Content-Type":"application/json",
+        "Accept":"application/javascript",
+        "Authorization": token
+      }})
       .then(r=>r.json())
       .then(json=> this.setState({
         pet: json,

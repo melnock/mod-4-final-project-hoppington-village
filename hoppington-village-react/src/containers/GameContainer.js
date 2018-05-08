@@ -17,15 +17,26 @@ class GameContainer extends React.Component{
   }
 
   componentDidMount(){
+    const token= `Token token=${ this.props.auth.token }`
     this.updateWindowDimensions();
     window.addEventListener('resize', this.updateWindowDimensions);
-    fetch("http://localhost:3000/api/v1/animals")
+    fetch("http://localhost:3000/api/v1/animals",{
+      headers: {
+        "Content-Type":"application/json",
+        "Accept":"application/javascript",
+        "Authorization": token
+      }})
       .then(r=>r.json())
       .then(json=> this.setState({
         animals: json
       }))
-    fetch("http://localhost:3000/api/v1/items")
-      .then(r=>r.json())
+    fetch("http://localhost:3000/api/v1/items",{
+      headers: {
+        "Content-Type":"application/json",
+        "Accept":"application/javascript",
+        "Authorization": token
+      }})
+      .then(r => r.json())
       .then(json=> this.setState({
         items: json
       }))
@@ -86,7 +97,7 @@ class GameContainer extends React.Component{
       <div className={this.state.class}>
         <div className="pet-display">
           <ItemList scroll={this.state.scroll} handleClick={this.handleClick} handleDragEnd= {this.handleDragEnd} dragX={this.state.dragX} dragY={this.state.dragY} beingDragged={this.state.beingDragged} handleDragStart={this.handleDragStart} items={this.state.items}/>
-          <PetContainer scroll={this.state.scroll} beingDragged={this.state.beingDragged} endOfDrag={this.state.endOfDrag} animals={this.state.animals}/>
+          <PetContainer scroll={this.state.scroll} beingDragged={this.state.beingDragged} endOfDrag={this.state.endOfDrag} animals={this.state.animals} auth={this.props.auth}/>
         </div>
       </div>
     )
