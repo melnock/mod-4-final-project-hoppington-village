@@ -99,7 +99,6 @@ class GameContainer extends React.Component{
         <div className="pet-display">
           <ItemList scroll={this.state.scroll} handleClick={this.handleClick} handleDragEnd= {this.handleDragEnd} dragX={this.state.dragX} dragY={this.state.dragY} beingDragged={this.state.beingDragged} handleDragStart={this.handleDragStart} items={this.state.items}/>
           <PetContainer scroll={this.state.scroll} beingDragged={this.state.beingDragged} endOfDrag={this.state.endOfDrag} animals={this.state.animals} auth={this.props.auth} currentUser={this.props.currentUser}/>
-          <LogoutButton logout={this.props.logout}/>
         </div>
       </div>
     )

@@ -4,6 +4,7 @@ import GameContainer from "./containers/GameContainer"
 // import Login from './containers/Login'
 import LoginForm from './components/AuthForm'
 import RegisterForm from './components/RegisterForm'
+import LogoutButton from './components/LogoutButton'
 
 class App extends Component {
   state={
@@ -34,10 +35,12 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
+          {this.state.currentUser ?
+          <LogoutButton logout={this.logout}/> : null }
           <img src="https://i.imgur.com/sv2rOVQ.png" alt="logo"  />
         </header>
           { this.state.auth && this.state.auth.status !== 404 ?
-          <GameContainer logout={this.logout} auth={this.state.auth} currentUser={this.state.currentUser}/> :
+          <GameContainer auth={this.state.auth} currentUser={this.state.currentUser}/> :
           <div>
             <LoginForm authFetched={this.authFetched}/>
             <RegisterForm authFetched={this.authFetched}/>
