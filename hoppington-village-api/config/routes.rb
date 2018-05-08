@@ -6,5 +6,6 @@ Rails.application.routes.draw do
     end
   end
 
+  post '/sessions/', to: 'sessions#create'
 
 end
