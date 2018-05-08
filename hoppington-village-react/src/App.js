@@ -39,7 +39,7 @@ class App extends Component {
           <LogoutButton logout={this.logout}/> : null }
           <img src="https://i.imgur.com/sv2rOVQ.png" alt="logo"  />
         </header>
-          { this.state.auth && this.state.auth.status !== 404 && this.state.auth.status !== 500 ?
+          { this.state.auth && this.state.auth.status !== 404 ?
           <GameContainer auth={this.state.auth} currentUser={this.state.currentUser}/> :
           <div>
             <LoginForm authFetched={this.authFetched}/>
