@@ -16,12 +16,15 @@ class AuthForm extends React.Component {
     const username = this.state.username
     const password = this.state.password
     const auth = {username, password}
-    this.handleLoginFetch(auth)
+    this.handleLoginFetch(auth, username)
   }
 
-  handleLoginFetch(auth) {
-    console.log("heeelp!!")
-    fetch("http://localhost:3000/sessions", {
+  handleLoginFetch(auth, username) {
+    console.log("!!!!", JSON.stringify(auth), this.props.url)
+    let url;
+    if (this.props.url) {url=this.props.url} else {url="http://localhost:3000/sessions"}
+
+    fetch(url, {
       method: "POST",
       headers: {
         "Content-Type":"application/json",
@@ -34,7 +37,7 @@ class AuthForm extends React.Component {
           this.setState({errors: json.errors})
         } else {
           this.setState({...this.DEFAULT_STATE})
-          this.props.authFetched(json)
+          this.props.authFetched(json, username)
           // this.props.history.push("/")
         }
       })
@@ -55,7 +58,7 @@ class AuthForm extends React.Component {
   }
 
   render(){
-    console.log(this.state.errors)
+    console.log(this.props)
     return (
       <div>
       {this.state.errors.length > 0 ? this.errors() : null}
