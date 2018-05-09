@@ -49,9 +49,9 @@ class PetContainer extends Component{
             energy: findpet.energy_level,
             cleanliness: findpet.cleanliness,
           })
-          this.hangry= setInterval(()=>{ this.state.hangry < 10 ?  this.setState({hangry: this.state.hangry + 1}) : null}, 60000)
-          this.cleanry = setInterval(()=>{ this.state.cleanliness < 10 ?  this.setState({cleanliness: this.state.cleanliness + 1}) : null}, 120000)
-          this.energyry = setInterval(()=>{ this.state.energy < 10 ?  this.setState({energy: this.state.energy + 1}) : null}, 45000)
+          this.hangry= setInterval(()=>{ this.state.hangry < 10 ?  this.setState({hangry: this.state.hangry + 1}) : null}, 30000)
+          this.cleanry = setInterval(()=>{ this.state.cleanliness < 10 ?  this.setState({cleanliness: this.state.cleanliness + 1}) : null}, 15000)
+          this.energyry = setInterval(()=>{ this.state.energy < 10 ?  this.setState({energy: this.state.energy + 1}) : null}, 20000)
         }
       })
   }
@@ -185,15 +185,16 @@ class PetContainer extends Component{
       cleanliness: this.state.cleanliness,
       hunger_level: this.state.hangry
     }
-    // fetch(`http://localhost:3000/api/v1/pets/${this.state.pet.id}`, {
-    //   method: "PATCH",
-    //   headers: {
-    //     "content-type": "application/json",
-    //     "authorization": "Token token:" + this.props.auth.token,
-    //     "accept":"application/javascript"
-    //   },
-    //   body: JSON.stringify(update)
-    // })
+    if (this.state.pet){
+    fetch(`http://localhost:3000/api/v1/pets/${this.state.pet.id}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+        "authorization": "Token token:" + this.props.auth.token,
+        "accept":"application/json"
+      },
+      body: JSON.stringify(update)
+    }).then(r=> console.log(r))}
     clearInterval(this.hangry)
     clearInterval(this.cleanry)
     clearInterval(this.energyry)
