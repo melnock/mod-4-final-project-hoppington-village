@@ -57,7 +57,7 @@ class AuthForm extends React.Component {
 
 
   render(){
-    console.log(this.props)
+    console.log(this.state.errors)
     return (
       <div className="form-stuff">
       {this.state.errors.length > 0 ? this.errors() : null}

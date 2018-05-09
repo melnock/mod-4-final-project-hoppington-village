@@ -4,7 +4,7 @@ const Pet = (props) => {
   return (
     <div className="pet-image">
     {props.animal ?
-       <img id={props.pet.name} onMouseEnter={props.handleMouseEnter} onMouseLeave={props.handleMouseLeave} src={props.cleanliness > 2 ? props.animal.sprites.main : props.animal.sprites.clean} /> :
+       <img id={props.pet.name} onMouseEnter={props.handleMouseEnter} onMouseLeave={props.handleMouseLeave} alt="" src={props.cleanliness > 2 ? props.animal.sprites.main : props.animal.sprites.clean} /> :
        null }
        {props.beingCleaned ?
          <div>

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import Pet from '../components/Pet'
 import PetSetUp from '../components/PetSetUp'
 import PetGauges from "../components/PetGauges"
-
-
+import GoForHop from '../components/GoForHop'
+import HopContainer from './HopContainer'
 
 class PetContainer extends Component{
 
@@ -22,7 +22,9 @@ class PetContainer extends Component{
       shoes: null
     },
     beingCleaned: false,
-    gettingRest: false
+    gettingRest: false,
+    hopping: false
+
   }
 
   componentDidMount(){
@@ -160,6 +162,12 @@ class PetContainer extends Component{
     }
   }
 
+  handleHop = () => {
+    this.setState({
+      hopping: !this.state.hopping
+    })
+  }
+
   handleAnimalPlacement=()=>{
     if(this.state.pet){
       if (document.getElementById(this.state.pet.name)){
@@ -171,7 +179,21 @@ class PetContainer extends Component{
     }
   }
 
-  componentDidUnmount(){
+  componentWillUnmount(){
+    const update={
+      energy_level: this.state.energy,
+      cleanliness: this.state.cleanliness,
+      hunger_level: this.state.hangry
+    }
+    // fetch(`http://localhost:3000/api/v1/pets/${this.state.pet.id}`, {
+    //   method: "PATCH",
+    //   headers: {
+    //     "content-type": "application/json",
+    //     "authorization": "Token token:" + this.props.auth.token,
+    //     "accept":"application/javascript"
+    //   },
+    //   body: JSON.stringify(update)
+    // })
     clearInterval(this.hangry)
     clearInterval(this.cleanry)
     clearInterval(this.energyry)
@@ -181,12 +203,18 @@ class PetContainer extends Component{
     return(
 
       <div className="pet-container">
+      {this.state.hopping ?
+        <div className="hop-game">
+          <HopContainer handleHop={this.handleHop}/>
+        </div>
+        :
+        <div>
         <div className="pet-header">
           <div className="pet-owner">
           <h1> {this.state.pet ? this.props.currentUser+"'s pet: " : "Welcome to Hoppington Village!"}</h1>
           </div>
           <div className="pet-name">
-            {this.state.pet ? <h1>this.state.pet.name</h1> : <img src="https://i.imgur.com/JtH23o7.png" alt="dancing" />}
+            {this.state.pet ? <h1>{this.state.pet.name}</h1> : <img src="https://i.imgur.com/JtH23o7.png" alt="dancing" />}
           </div>
         </div>
         <PetGauges pet={this.state.pet}
@@ -194,8 +222,9 @@ class PetContainer extends Component{
           cleanliness= {this.state.cleanliness}
           energy= {this.state.energy}
         />
+
         {(this.state.pet && this.props.animals) ?
-          <Pet
+          <div><Pet
             scroll={this.props.scroll}
             beingCleaned={this.state.beingCleaned}
             gettingRest={this.state.gettingRest}
@@ -207,14 +236,18 @@ class PetContainer extends Component{
             handleAnimalPlacement={this.handleAnimalPlacement}
             handleMouseEnter={this.handleMouseEnter}
             handleMouseLeave={this.handleMouseLeave}
-          /> : <PetSetUp
+          />
+          <GoForHop handleHop={this.handleHop}/></div>
+           : <PetSetUp
             auth = {this.props.auth}
             scroll={this.props.scroll}
             animal={this.props.animals}
             handleAnimalPlacement={this.handleAnimalPlacement}
             handleBunnyCreation={this.handleBunnyCreation}
           />
-          }
+        }
+        </div>
+      }
 
       </div>
     )

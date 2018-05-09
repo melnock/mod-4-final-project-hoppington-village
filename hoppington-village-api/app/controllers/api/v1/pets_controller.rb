@@ -3,6 +3,13 @@ class Api::V1::PetsController < ApplicationController
   def index
     render json: Pet.all
   end
+  #
+  # def update
+  #   @pet = Pet.find(params[:id])
+  #   @pet.update(pet_params)
+  #
+  # end
+
 
   def create
     @pet = Pet.create(pet_params)

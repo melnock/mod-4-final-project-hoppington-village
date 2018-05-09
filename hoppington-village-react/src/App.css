@@ -1,4 +1,6 @@
-
+body{
+  background-color: #a1fcf9;
+}
 .App {
   text-align: center;
 }
@@ -12,6 +14,7 @@
   height: 100px;
 }
 
+
 .App-header {
   position: relative;
   top:0px;
@@ -24,6 +27,10 @@
 
 .App-title {
   font-size: 1.5em;
+}
+
+.hopButton {
+  float: right;
 }
 
 .App-intro {
@@ -52,6 +59,7 @@
   width: 180px;
   height: 30px;
   color: purple;
+
 }
 
 
@@ -60,7 +68,7 @@
   height: 28px;
   border: 0px;
   border-bottom:1px solid purple;
-
+    background-color: #a1fcf9;
 }
 
 .text-field-component label {
@@ -78,22 +86,30 @@
 } */
 
 input[type=submit]{
-  color: #FFF;
-  font-size: 1.5em;
+  color: #9932cc;
+  font-size: 1em;
   border: 1px solid #FFF;
+  border-radius: 5px;
   margin: 5px;
-  background-color: #a1fcf9;
+  background-color: #f9f99f;
+  box-shadow: 0 0 10px #FFF;
 }
 
 input:hover{
   background-color: #42f4a1;
   box-shadow: 0 0 10px #FFF;
+  border-radius: 3px;
+  padding-bottom: 3px;
 }
 
 .items{
   float:left;
   padding: 15px;
   background-color: #a1fcf9;
+}
+
+.hidden{
+  display: none;
 }
 
 #carrot {
@@ -164,6 +180,32 @@ input:hover{
   -o-user-drag: none;
   user-drag: none;
 } */
+.hop-game{
+  display: flex;
+  justify-content: center;
+}
+.go-on-a-hop{
+  border-radius: 30px;
+}
+
+.welcome{
+  padding: 30px;
+  margin:auto;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  justify-content: space-around;
+  color: purple;
+}
+
+button{
+  background-color: #f9f99f;
+  color: purple;
+  border: 0px solid purple;
+  border-radius: 3px;
+  box-shadow: 0 0 10px #FFF;
+  font-size: 1em;
+}
 
 /* sleepyz */
 

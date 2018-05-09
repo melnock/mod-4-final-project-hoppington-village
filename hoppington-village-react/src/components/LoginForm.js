@@ -9,7 +9,7 @@ class LoginForm extends React.Component{
   render(){
     return (
       <div>
-      Login Form:
+      <h2>Login Form:</h2>
         <AuthForm { ...this.props } authFetched={this.authFetched} url={this.state.url}/>
       </div>
     )
