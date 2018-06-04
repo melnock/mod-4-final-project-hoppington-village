@@ -9,7 +9,7 @@ Fork and clone this repository.
 
 `cd hoppington-village-api` to open the api.
 
-`run rails db:create`, `rails db:migrate`, and `rails db:seed` to create the database of obstacles and characters.
+`run rails db:create`, `rails db:migrate`, and `rails db:seed` to create the database of items and character.
 
 `rails server` to start the server.
 
