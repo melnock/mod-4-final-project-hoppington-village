@@ -7,12 +7,12 @@ React Front-end and Ruby on Rails API to care for a virtual pet bunny
 ## Set-up
 Fork and clone this repository.
 
-cd backend to open the api.
+`cd hoppington-village-api` to open the api.
 
 `run rails db:create`, `rails db:migrate`, and `rails db:seed` to create the database of obstacles and characters.
 
 `rails server` to start the server.
 
-`cd ../frontend` and run `npm start`.
+`cd ../hoppington-village-react` and run `npm start`.
 
 Now Play!
