@@ -4,7 +4,7 @@ React Front-end and Ruby on Rails API to care for a virtual pet bunny
 ## Walkthrough
 [click here](https://youtu.be/NOLy9hjBR6U)
 
-To log into the [live site]() as a guest:
+To log into the [live site](https://nameless-shelf-60784.herokuapp.com/) as a guest:
 username: guest
 password: guest
 
