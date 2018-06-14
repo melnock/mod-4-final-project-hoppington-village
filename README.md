@@ -4,6 +4,12 @@ React Front-end and Ruby on Rails API to care for a virtual pet bunny
 ## Walkthrough
 [click here](https://youtu.be/NOLy9hjBR6U)
 
+To log into the [live site]() as a guest:
+username: guest
+password: guest
+
+
+
 ## Set-up
 Fork and clone this repository.
 
