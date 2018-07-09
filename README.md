@@ -19,6 +19,6 @@ Fork and clone this repository.
 
 `rails server` to start the server.
 
-`cd ../hoppington-village-react` and run `npm start`.
+`cd ../hoppington-village-react` and run `npm install && npm start`.
 
 Now Play!
